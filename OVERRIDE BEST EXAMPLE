@@ -1,0 +1,437 @@
+######## ######## WITHOUT STATIC KEYWORD #############
+
+class A15
+
+{
+
+void m1()
+
+{
+
+System.out.println("A m1");
+
+}
+
+void m2()
+
+{
+
+System.out.println("A m2");
+
+m1();
+
+}
+
+}
+
+class B15 extends A15
+
+{
+
+void m1()
+
+{
+
+System.out.println("B m1");
+
+}
+
+void m3()
+
+{
+
+System.out.println("B m3");
+
+m1();
+
+super.m2();
+
+}
+
+}
+
+class C15 extends B15
+
+{
+
+void m2()
+
+{
+
+System.out.println("C m2");
+
+}
+
+}
+
+class D15 extends C15
+
+{
+
+void m1()
+
+{
+
+System.out.println("D m1");
+
+}
+
+void m2()
+
+{
+
+System.out.println("D m2");
+
+}
+
+void m4()
+
+{
+
+System.out.println("D m4");
+
+}
+
+public static void main(String args[])
+
+{
+
+D15 d=new D15();
+
+d.m1();
+
+d.m2();
+
+d.m3();
+
+d.m4();
+
+}
+
+}
+
+COMPILE:_javac D15.java
+
+RUN:_java D15
+
+OUTPUT:-
+
+D m1
+
+D m2
+
+B m3
+
+D m1
+
+A m2
+
+D m1
+
+D m4
+
+######### ######## WITH STATIC KEYWORD #############
+
+class A15
+
+{
+
+static void m1()
+
+{
+
+System.out.println("A m1");
+
+}
+
+static void m2()
+
+{
+
+System.out.println("A m2");
+
+m1();
+
+}
+
+}
+
+class B15 extends A15
+
+{
+
+static void m1()
+
+{
+
+System.out.println("B m1");
+
+}
+
+void m3()
+
+{
+
+System.out.println("B m3");
+
+m1();
+
+super.m2();
+
+}
+
+}
+
+class C15 extends B15
+
+{
+
+static void m2()
+
+{
+
+System.out.println("C m2");
+
+}
+
+}
+
+class D15 extends C15
+
+{
+
+static void m1()
+
+{
+
+System.out.println("D m1");
+
+}
+
+static void m2()
+
+{
+
+System.out.println("D m2");
+
+}
+
+static void m4()
+
+{
+
+System.out.println("D m4");
+
+}
+
+public static void main(String args[])
+
+{
+
+D15 d=new D15();
+
+d.m1();
+
+d.m2();
+
+d.m3();
+
+d.m4();
+
+}
+
+}
+
+COMPILE:_javac D15.java
+
+RUN:_java D15
+
+OUTPUT:-
+
+D m1
+
+D m2
+
+B m3
+
+B m1
+
+A m2
+
+A m1
+
+D m4
+
+#######COMBINATION OF STATIC AND NON STATIC KEYWORD ##########
+
+class A15
+
+{
+
+static int a=10;
+
+int x=20;
+
+static void m1()
+
+{
+
+System.out.println("A m1");
+
+}
+
+void m2()
+
+{
+
+System.out.println("A m2");
+
+m1();
+
+}
+
+void m3()
+
+{
+
+System.out.println("A m3");
+
+System.out.println("A a:"+a);
+
+System.out.println("A x:"+x);
+
+m1();
+
+m2();
+
+}
+
+}
+
+class B15 extends A15
+
+{
+
+static int a=50;
+
+int x=60;
+
+static void m1()
+
+{
+
+System.out.println("B m1");
+
+}
+
+void m2()
+
+{
+
+System.out.println("B m2");
+
+System.out.println("B a:"+a);
+
+System.out.println("B x:"+x);
+
+}
+
+void m4()
+
+{
+
+super.a=a-10;
+
+super.x=x-10;
+
+}
+
+}
+
+class D15
+
+{
+
+public static void main(String args[])
+
+{
+
+B15 b1=new B15();
+
+B15 b2=new B15();
+
+A15 a1=new B15();
+
+b1.a=15;
+
+b1.x=16;
+
+b2.a=18;
+
+b2.x=19;
+
+b1.m4();
+
+b2.m4();
+
+b1.m3();
+
+System.out.println();
+
+b2.m3();
+
+System.out.println();
+
+System.out.println(b1.a);
+
+System.out.println(a1.a);
+
+System.out.println(b1.x);
+
+System.out.println(a1.x);
+
+}
+
+}
+
+COMPILE:_javac D15.java
+
+RUN:_java D15
+
+OUTPUT:-
+
+A m3
+
+A a:8
+
+A x:6
+
+A m1
+
+B m2
+
+B a:18
+
+B x:16
+
+A m3
+
+A a:8
+
+A x:9
+
+A m1
+
+B m2
+
+B a:18
+
+B x:19
+
+18
+
+8
+
+16
+
+20
