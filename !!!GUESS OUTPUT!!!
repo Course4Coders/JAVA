@@ -1,0 +1,405 @@
+Q.1
+
+class Example
+
+{
+
+public static void main(String args[])
+
+{
+
+System.out.println(m1());
+
+}
+
+static int m1()
+
+{
+
+try
+
+{
+
+System.out.println("In outer try");
+
+try
+
+{
+
+System.out.println("In Inner try");
+
+System.out.println(10/0);
+
+}
+
+catch(NullPointerException e)
+
+{
+
+System.out.println("In Inner catch");
+
+}
+
+finally
+
+{
+
+System.out.println("In Inner finally");
+
+return 20;
+
+}
+
+}
+
+catch(NullPointerException e)
+
+{
+
+System.out.println("In outer catch");
+
+}
+
+finally
+
+{
+
+System.out.println("In outer finally");
+
+}
+
+System.out.println("After outer try/catch/finally");
+
+return 30;
+
+}
+
+}
+
+Q.2
+
+class Example
+
+{
+
+public static void main(String args[])
+
+{
+
+System.out.println(m1());
+
+}
+
+static int m1()
+
+{
+
+try
+
+{
+
+System.out.println("In outer try");
+
+try
+
+{
+
+System.out.println("In Inner try");
+
+System.out.println(10/0);
+
+}
+
+catch(NullPointerException e)
+
+{
+
+System.out.println("In Inner catch");
+
+}
+
+finally
+
+{
+
+System.out.println("In Inner finally");
+
+return 20;
+
+}
+
+System.out.println("After Inner try/catch/finally");
+
+return 100;
+
+}
+
+catch(NullPointerException e)
+
+{
+
+System.out.println("In outer catch");
+
+}
+
+finally
+
+{
+
+System.out.println("In outer finally");
+
+}
+
+System.out.println("After outer try/catch/finally");
+
+return 30;
+
+}
+
+Q.3
+
+class Example
+
+{
+
+static void m1()
+
+{
+
+int a;
+
+try
+
+{
+
+a=10;
+
+System.out.println(a);
+
+}
+
+catch(ArithmeticException e)
+
+{
+
+System.out.println(a);
+
+}
+
+System.out.println(a);
+
+}
+
+public static void main(String args[])
+
+{
+
+m1();
+
+}
+
+}
+
+Q.4
+
+class Example
+
+{
+
+static void m1()
+
+{
+
+int a;
+
+try
+
+{
+
+a=10;
+
+System.out.println(a);
+
+}
+
+catch(ArithmeticException e)
+
+{
+
+a=20;
+
+System.out.println(a);
+
+}
+
+System.out.println(a);
+
+}
+
+public static void main(String args[])
+
+{
+
+m1();
+
+}
+
+}
+
+Q.5
+
+class Example
+
+{
+
+static void m1()
+
+{
+
+int a;
+
+try
+
+{
+
+a=10;
+
+System.out.println(a/0);
+
+}
+
+catch(ArithmeticException e)
+
+{
+
+a=20;
+
+System.out.println(a);
+
+}
+
+System.out.println(a);
+
+}
+
+public static void main(String args[])
+
+{
+
+m1();
+
+}
+
+}
+
+Q.6
+
+class Example
+
+{
+
+static void m1()
+
+{
+
+int a;
+
+try
+
+{
+
+a=10;
+
+System.out.println(a);
+
+}
+
+catch(ArithmeticException e)
+
+{
+
+a=20;
+
+System.out.println(a);
+
+}
+
+finally
+
+{
+
+System.out.println(a);
+
+}
+
+System.out.println(a);
+
+}
+
+public static void main(String args[])
+
+{
+
+m1();
+
+}
+
+}
+
+Q.7
+
+class A13
+
+{
+
+void m1()
+
+{
+
+System.out.println("A m1");
+
+}
+
+void m2()
+
+{
+
+System.out.println("A m2");
+
+m1();
+
+}
+
+}
+
+class B13 extends A13
+
+{
+
+void m1()
+
+{
+
+System.out.println("B m1");
+
+}
+
+public static void main(String args[])
+
+{
+
+B13 b=new B13();
+
+b.m1();
+
+b.m2();
+
+A13 a=new B13();
+
+a.m1();
+
+a.m2();
+
+}
+
+}
